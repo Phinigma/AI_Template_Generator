@@ -1,0 +1,17 @@
+<!-- templates/result.html -->
+{% extends "base.html" %}
+{% block content %}
+<h1>Your Generated Prompt</h1>
+<textarea id="final_prompt" rows="20">{{ final_prompt }}</textarea>
+<button onclick="copyPrompt()">Copy to Clipboard</button>
+<a href="/" class="button">Create Another Prompt</a>
+<script>
+function copyPrompt() {
+    var copyText = document.getElementById("final_prompt");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    alert("Prompt copied to clipboard!");
+}
+</script>
+{% endblock %}

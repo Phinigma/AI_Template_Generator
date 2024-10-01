@@ -1,0 +1,117 @@
+/* static/styles.css */
+
+/* Fonts */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1E1E1E; /* Site Background */
+    color: #C0C0C0; /* Body Text */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    background-color: #2E2E2E; /* Content Background */
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1, h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #DC143C; /* Titles */
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    color: #00CC66; /* Accent Color */
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: #1E1E1E;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #C0C0C0;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: #999;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkbox-group label {
+    width: 45%;
+    margin-right: 5%;
+    margin-top: 10px;
+    color: #C0C0C0;
+    font-weight: normal;
+}
+
+.checkbox-group input {
+    margin-right: 5px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #00CC66; /* Accent Color */
+    border: none;
+    border-radius: 4px;
+    color: #1E1E1E;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+}
+
+button:hover {
+    background-color: #00994D;
+}
+
+a.button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #DC143C; /* Bold Red */
+    color: #1E1E1E;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+a.button:hover {
+    background-color: #B22222;
+}
+
+textarea#final_prompt {
+    width: 100%;
+    padding: 10px;
+    background-color: #1E1E1E;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #C0C0C0;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+    }
+    
+    .checkbox-group label {
+        width: 100%;
+    }
+}
