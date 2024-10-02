@@ -1,0 +1,19 @@
+# VALUES KEY
+# prompt_name: The name of the prompt.
+# subject_matter: The subject matter of the non-fiction work.
+# purpose: The purpose of the non-fiction work.
+# audience: The target audience.
+# tone: The overall tone of the work.
+# writing_style: The style of writing.
+# length: The desired length of the work.
+# additional_notes: Any additional notes or instructions.
+
+# EDIT BELOW HERE
+
+What: Help me create a non-fiction piece.
+
+Generate a {{ length }} non-fiction work about {{ subject_matter }}. The purpose is {{ purpose }}. The target audience is {{ audience }}. The tone should be {{ tone }}, and the writing style should be {{ writing_style }}.
+
+Additional notes: {{ additional_notes }}
+
+Ensure the content is accurate, well-researched, and does not violate any copyright.

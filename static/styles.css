@@ -115,3 +115,55 @@ textarea#final_prompt {
         width: 100%;
     }
 }
+
+/* Styles for the Prompt Name input field */
+.prompt-name {
+    width: 300px; /* Adjust the width as needed */
+    max-width: 100%; /* Ensure responsiveness on smaller screens */
+    padding: 0.5em;
+    box-sizing: border-box; /* Include padding in the total width */
+}
+
+/* Styles for the Prompt Output textarea */
+.prompt-output {
+    resize: none; /* Disable resizing */
+    overflow: auto; /* Enable scrolling */
+    width: 100%; /* Make it take full width of its container */
+    height: 400px; /* Set a fixed height; adjust as needed */
+    padding: 0.5em;
+    box-sizing: border-box; /* Include padding in the total width and height */
+    font-family: inherit; /* Inherit font from parent for consistency */
+    font-size: 1em; /* Set a readable font size */
+}
+
+/* Styles for the Prompt Output textarea */
+.prompt-output {
+    resize: none; /* Disable resizing */
+    overflow: auto; /* Enable scrolling */
+    width: 100%; /* Full width of container */
+    height: 400px; /* Fixed height */
+    padding: 0.5em;
+    box-sizing: border-box; /* Include padding in total width and height */
+    font-family: inherit; /* Inherit font for consistency */
+    font-size: 1em; /* Readable font size */
+}
+
+/* Optional: Responsive Design */
+@media (max-width: 600px) {
+    .prompt-output {
+        height: 300px; /* Smaller height on small screens */
+    }
+}
+
+/* Optional: Enhanced Focus States */
+.prompt-output:focus {
+    border-color: #007BFF; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle shadow */
+}
+
+/* Optional: Button Hover States */
+button:hover,
+.button:hover {
+    background-color: #218838; /* Darker green on hover */
+}

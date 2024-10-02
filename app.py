@@ -1,18 +1,32 @@
-# app.py
-
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory, jsonify
+import os
+import json
+from jinja2 import Template
 
 app = Flask(__name__)
 
+# Load configuration data
+def load_config(work_type):
+    config_path = os.path.join(app.root_path, 'config', 'genres.json')
+    with open(config_path, 'r') as f:
+        genres_data = json.load(f)
+    return genres_data.get(work_type, {})
+
+@app.route('/config/<path:filename>')
+def config_files(filename):
+    config_dir = os.path.join(app.root_path, 'config')
+    return send_from_directory(config_dir, filename)
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    genres_data_fiction = load_config('Fiction')
+    genres_data_nonfiction = load_config('Non-Fiction')
     if request.method == 'POST':
-        print("Form submitted")  # Debug statement
         # Collect common data
         prompt_name = request.form.get('prompt_name', '')
         work_type = request.form.get('work_type', '')
         user_inputs = {'prompt_name': prompt_name, 'work_type': work_type}
-        
+
         if work_type == 'Fiction':
             # Collect fiction-specific data
             genre = request.form.get('genre', '')
@@ -26,7 +40,7 @@ def index():
             plot_overview = request.form.get('plot_overview', '')
             length = request.form.get('length', '')
             additional_notes = request.form.get('additional_notes', '')
-            
+
             user_inputs.update({
                 'genre': genre,
                 'subgenres': subgenres,
@@ -40,20 +54,20 @@ def index():
                 'length': length,
                 'additional_notes': additional_notes
             })
-            
+
             # Generate prompt
-            final_prompt = generate_fiction_prompt(user_inputs)
-        
+            final_prompt = generate_prompt('fiction', user_inputs)
+
         elif work_type == 'Non-Fiction':
             # Collect non-fiction-specific data
             subject_matter = request.form.get('subject_matter', '')
             purpose = request.form.get('purpose', '')
             audience = request.form.getlist('audience[]')
-            tone = request.form.get('tone', '')
-            writing_style = request.form.get('writing_style', '')
-            length = request.form.get('length', '')
-            additional_notes = request.form.get('additional_notes', '')
-            
+            tone = request.form.get('tone_nonfiction', '')
+            writing_style = request.form.get('writing_style_nonfiction', '')
+            length = request.form.get('length_nonfiction', '')
+            additional_notes = request.form.get('additional_notes_nonfiction', '')
+
             user_inputs.update({
                 'subject_matter': subject_matter,
                 'purpose': purpose,
@@ -63,72 +77,40 @@ def index():
                 'length': length,
                 'additional_notes': additional_notes
             })
-            
+
             # Generate prompt
-            final_prompt = generate_nonfiction_prompt(user_inputs)
-        
+            final_prompt = generate_prompt('nonfiction', user_inputs)
+
         else:
             final_prompt = "Invalid work type selected."
-        
+
         return render_template('result.html', final_prompt=final_prompt)
-    
+
     else:
         return render_template('index.html')
 
-def generate_fiction_prompt(inputs):
+def generate_prompt(work_type, inputs):
     """
-    Generates a prompt for fiction works based on user inputs.
+    Generates a prompt based on the work type and user inputs using external template files.
     """
-    # Extract data from inputs
-    genre = inputs.get('genre', 'a genre')
-    subgenres = ', '.join(inputs.get('subgenres', [])) or 'various subgenres'
-    narrative_perspective = inputs.get('narrative_perspective', 'a perspective')
-    themes = ', '.join(inputs.get('themes', [])) or 'various themes'
-    tone = inputs.get('tone', 'a tone')
-    writing_style = inputs.get('writing_style', 'a style')
-    setting = inputs.get('setting', 'an unspecified setting')
-    characters = inputs.get('characters', 'unspecified characters')
-    plot_overview = inputs.get('plot_overview', 'no plot overview provided')
-    length = inputs.get('length', 'an unspecified length')
-    additional_notes = inputs.get('additional_notes', 'No additional notes.')
-    
-    # Build the prompt
-    prompt = f"""
-What: Help me create a fictional story.
+    # Determine the template file based on work type
+    if work_type == 'fiction':
+        template_file = os.path.join(app.root_path, 'prompts', 'fiction_prompt_template.txt')
+    elif work_type == 'nonfiction':
+        template_file = os.path.join(app.root_path, 'prompts', 'nonfiction_prompt_template.txt')
+    else:
+        return "Invalid work type selected."
 
-Generate a {length} {genre} story{f' ({subgenres})' if subgenres != 'various subgenres' else ''} written from {narrative_perspective} perspective. The story should explore themes such as {themes} and have a {tone} tone. The writing style should be {writing_style}.
+    # Read the template file
+    with open(template_file, 'r') as file:
+        template_content = file.read()
 
-The setting is {setting}. Main characters include {characters}. Here's a brief plot overview: {plot_overview}.
+    # Create a Template object
+    template = Template(template_content)
 
-Additional notes: {additional_notes}
+    # Render the template with user inputs
+    prompt = template.render(**inputs)
 
-Ensure the story is original and does not violate any copyright laws.
-"""
-    return prompt.strip()
-
-def generate_nonfiction_prompt(inputs):
-    """
-    Generates a prompt for non-fiction works based on user inputs.
-    """
-    # Extract data from inputs
-    subject_matter = inputs.get('subject_matter', 'an unspecified subject')
-    purpose = inputs.get('purpose', 'an unspecified purpose')
-    audience = ', '.join(inputs.get('audience', [])) or 'a general audience'
-    tone = inputs.get('tone', 'a tone')
-    writing_style = inputs.get('writing_style', 'a style')
-    length = inputs.get('length', 'an unspecified length')
-    additional_notes = inputs.get('additional_notes', 'No additional notes.')
-    
-    # Build the prompt
-    prompt = f"""
-What: Help me create a non-fiction piece.
-
-Generate a {length} non-fiction work about {subject_matter}. The purpose is {purpose}. The target audience is {audience}. The tone should be {tone}, and the writing style should be {writing_style}.
-
-Additional notes: {additional_notes}
-
-Ensure the content is accurate, well-researched, and does not violate any copyright.
-"""
     return prompt.strip()
 
 if __name__ == '__main__':

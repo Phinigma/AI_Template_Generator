@@ -1,0 +1,41 @@
+{
+    "Fiction": {
+        "narrative_perspectives": [
+            "First Person",
+            "Third Person Limited",
+            "Third Person Omniscient",
+            "Second Person"
+        ],
+        "themes": [
+            "Love",
+            "Betrayal",
+            "Survival",
+            "Identity",
+            "Good vs. Evil",
+            "Coming of Age",
+            "Courage",
+            "Friendship",
+            "Power and Corruption"
+        ],
+        "tones": [
+            "Dark",
+            "Light-hearted",
+            "Suspenseful",
+            "Inspirational",
+            "Reflective"
+        ],
+        "writing_styles": [
+            "Descriptive",
+            "Minimalistic",
+            "Conversational",
+            "Formal",
+            "Humorous"
+        ],
+        "lengths": {
+            "Flash Fiction": "up to 1,000 words",
+            "Short Story": "1,000 - 7,500 words",
+            "Novella": "17,500 - 40,000 words",
+            "Novel": "40,000+ words"
+        }
+    }
+}

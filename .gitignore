@@ -1,20 +1,32 @@
-# Python bytecode
-__pycache__/
-*.py[cod]
+# Ignore all files in the config directory
+config/*
+# But allow specific non-sensitive config files
+!config/genres.json
+!config/options.json
+
+# Ignore sensitive files
+config/secrets.json
+config/.env
 
 # Virtual environment
 venv/
+__pycache__/
+*.pyc
 
-# Log files
-*.log
-
-# Environment variables (Do not track sensitive data)
+# Environment variables
 .env
 
-# OS-generated files
-.DS_Store
-Thumbs.db
+# Database files
+*.sqlite3
 
-# IDE/Editor-specific files
-.idea/
+# IDE/editor settings
 .vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# Unused
+unused/*
