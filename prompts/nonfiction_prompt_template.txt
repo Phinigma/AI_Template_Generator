@@ -1,19 +1,13 @@
-# VALUES KEY
-# prompt_name: The name of the prompt.
-# subject_matter: The subject matter of the non-fiction work.
-# purpose: The purpose of the non-fiction work.
-# audience: The target audience.
-# tone: The overall tone of the work.
-# writing_style: The style of writing.
-# length: The desired length of the work.
-# additional_notes: Any additional notes or instructions.
+Prompt: {{prompt_name}}
 
-# EDIT BELOW HERE
+What: Act as a subject matter expert and help me create a non-fiction literary work.
 
-What: Help me create a non-fiction piece.
+{% if subject_matter %} (Subject Matter: {{ subject_matter }}){% endif %}
+{% if purpose %} (Purpose: {{ purpose }}){% endif %}
+{% if audience %} (Audience: {{ audience }}){% endif %}
+{% if tone %} (Tone: {{ tone }}){% endif %}
+{% if writing_style %} (Writing Style: {{ writing_style }}){% endif %}
+{% if length %} (Length: {{ length }}){% endif %}
+{% if additional_notes %} (Please try to include: {{ additional_notes }}){% endif %}
 
-Generate a {{ length }} non-fiction work about {{ subject_matter }}. The purpose is {{ purpose }}. The target audience is {{ audience }}. The tone should be {{ tone }}, and the writing style should be {{ writing_style }}.
-
-Additional notes: {{ additional_notes }}
-
-Ensure the content is accurate, well-researched, and does not violate any copyright.
+Please use this information to write a well-researched and insightful nonfiction piece that reads naturally and engages the reader. Focus on delivering clear, concise information while maintaining a logical structure that builds on the key points. Ensure the tone aligns with the subject matter, and the writing style should be accessible yet professional, allowing the reader to fully grasp the complexities of the topic. When possible use simple terms to describe key concepts.

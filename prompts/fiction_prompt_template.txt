@@ -1,25 +1,20 @@
-# VALUES KEY
-# prompt_name: The name of the prompt.
-# genre: The primary genre of the story.
-# subgenres: A list of subgenres.
-# narrative_perspective: The perspective from which the story is told.
-# themes: A list of themes explored in the story.
-# tone: The overall tone of the story.
-# writing_style: The style of writing.
-# setting: The setting of the story.
-# characters: Main characters in the story.
-# plot_overview: A brief overview of the plot.
-# length: The desired length of the story.
-# additional_notes: Any additional notes or instructions.
+Prompt: {{prompt_name}}
 
-# EDIT BELOW HERE
+What: Help me create a fictional work.
 
-What: Help me create a fictional story.
+Information about the work:
+{% if genre %} (Genre: {{ genre }}){% endif %}
+{% if subgenres %} (The subgenre is: {{ subgenres }}){% endif %}
+{% if narrative_perspective %} (The perspective is: {{ narrative_perspective }}){% endif %}
+{% if themes %} (Themes: {{ themes }}){% endif %}
+{% if tone %} (Tone: {{ tone }}){% endif %}
+{% if writing_style %} (Writing Style: {{ writing_style }}){% endif %}
+{% if setting %} (Setting: {{ setting }}){% endif %}
+{% if characters %} (Characters: {{ characters }}){% endif %}
+{% if plot_overview %} (Plot Overview: {{ plot_overview }}){% endif %}
+{% if length %} (Length: {{ length }}){% endif %}
+{% if additional_notes %} (Please try to include: {{ additional_notes }}){% endif %}
 
-Generate a {{ length }} {{ genre }} story{% if subgenres %} ({{ subgenres }}){% endif %} written from a {{ narrative_perspective }} perspective. The story should explore themes such as {{ themes }} and have a {{ tone }} tone. The writing style should be {{ writing_style }}.
-
-The setting is {{ setting }}. Main characters include {{ characters }}. Here's a brief plot overview: {{ plot_overview }}.
-
-Additional notes: {{ additional_notes }}
+Craft a complete, high-quality work using the provided details. Focus on developing a strong voice and style that aligns with the chosen genre and tone. The characters should feel realistic and relatable, they should also be well thought out and consistent. The setting should be immersive and the plot should unfold naturally with a clear beginning, middle, and end. Ensure that the writing is smooth and engaging, and that the themes are explored thoughtfully, making the story resonate on a deeper level.
 
 Ensure the story is original and does not violate any copyright laws.

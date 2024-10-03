@@ -1,0 +1,22 @@
+# VALUES KEY - FICTION
+# prompt_name: The name of the prompt.
+# genre: The primary genre of the story.
+# subgenres: A list of subgenres.
+# narrative_perspective: The perspective from which the story is told.
+# themes: A list of themes explored in the story.
+# tone: The overall tone of the story.
+# writing_style: The style of writing.
+# setting: The setting of the story.
+# characters: Main characters in the story.
+# plot_overview: A brief overview of the plot.
+# length: The desired length of the story.
+# additional_notes: Any additional notes or instructions.
+
+# VALUES KEY - NON-FICTION
+# subject_matter: The subject matter of the non-fiction work.
+# purpose: The purpose of the non-fiction work.
+# audience: The target audience.
+# tone: The overall tone of the work.
+# writing_style: The style of writing.
+# length: The desired length of the work.
+# additional_notes: Any additional notes or instructions.

@@ -1,13 +1,9 @@
-// static/script.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const workTypeSelect = document.getElementById('work_type');
     const fictionFields = document.getElementById('fiction_fields');
     const nonfictionFields = document.getElementById('nonfiction_fields');
-
     const genreSelect = document.getElementById('genre');
     const subgenreDiv = document.getElementById('subgenre_div');
-
     let genresData = {};
 
     // Fetch genres configuration from the server
@@ -22,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     function populateGenres() {
-        // Populate Genre dropdown based on work type
         workTypeSelect.addEventListener('change', function() {
             const selectedWorkType = this.value;
             const genreSelectElement = document.getElementById('genre');
@@ -96,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedGenre = this.value;
         const selectedWorkType = workTypeSelect.value;
         const subgenres = genresData[selectedWorkType].genres[selectedGenre] || [];
-        // Clear existing subgenres
         subgenreDiv.innerHTML = '';
         if (subgenres.length > 0) {
             subgenres.forEach(function(subgenre) {
@@ -113,4 +107,18 @@ document.addEventListener('DOMContentLoaded', function() {
             subgenreDiv.innerHTML = 'No subgenres available for this genre.';
         }
     });
+
+    // Copy to Clipboard functionality using modern Clipboard API
+    function copyPrompt() {
+        var copyText = document.getElementById("final_prompt");
+        navigator.clipboard.writeText(copyText.value)
+            .then(() => {
+                alert("Prompt copied to clipboard!");
+            })
+            .catch((err) => {
+                console.error("Error copying text: ", err);
+                alert("Failed to copy prompt.");
+            });
+    }
+
 });
