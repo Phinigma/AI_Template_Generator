@@ -23,22 +23,22 @@ def index():
     genres_data_nonfiction = load_config('Non-Fiction')
     if request.method == 'POST':
         # Collect common data
-        prompt_name = request.form.get('prompt_name', '')
+        prompt_name = request.form.get('prompt_name', 'Untitled')
         work_type = request.form.get('work_type', '')
         user_inputs = {'prompt_name': prompt_name, 'work_type': work_type}
 
         if work_type == 'Fiction':
             # Collect fiction-specific data
-            genre = request.form.get('genre', '')
+            genre = request.form.get('genre', 'General')
             subgenres = request.form.getlist('subgenres[]')
-            narrative_perspective = request.form.get('narrative_perspective', '')
+            narrative_perspective = request.form.get('narrative_perspective', 'Third Person')
             themes = request.form.getlist('themes[]')
-            tone = request.form.get('tone', '')
-            writing_style = request.form.get('writing_style', '')
+            tone = request.form.get('tone', 'Neutral')
+            writing_style = request.form.get('writing_style', 'Standard')
             setting = request.form.get('setting', '')
             characters = request.form.get('characters', '')
             plot_overview = request.form.get('plot_overview', '')
-            length = request.form.get('length', '')
+            length = request.form.get('length', 'Short')
             additional_notes = request.form.get('additional_notes', '')
 
             user_inputs.update({
@@ -60,12 +60,12 @@ def index():
 
         elif work_type == 'Non-Fiction':
             # Collect non-fiction-specific data
-            subject_matter = request.form.get('subject_matter', '')
+            subject_matter = request.form.get('subject_matter', 'General')
             purpose = request.form.get('purpose', '')
             audience = request.form.getlist('audience[]')
-            tone = request.form.get('tone_nonfiction', '')
-            writing_style = request.form.get('writing_style_nonfiction', '')
-            length = request.form.get('length_nonfiction', '')
+            tone = request.form.get('tone_nonfiction', 'Neutral')
+            writing_style = request.form.get('writing_style_nonfiction', 'Standard')
+            length = request.form.get('length_nonfiction', 'Medium')
             additional_notes = request.form.get('additional_notes_nonfiction', '')
 
             user_inputs.update({
@@ -84,10 +84,15 @@ def index():
         else:
             final_prompt = "Invalid work type selected."
 
-        return render_template('result.html', final_prompt=final_prompt)
+        print(f"User Inputs: {user_inputs}")
+        print(f"Generated Prompt: {final_prompt}")
+
+        return render_template('result.html', final_prompt=final_prompt, user_inputs=user_inputs)
+
 
     else:
         return render_template('index.html')
+
 
 def generate_prompt(work_type, inputs):
     """
