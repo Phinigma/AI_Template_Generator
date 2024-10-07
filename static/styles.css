@@ -1,35 +1,39 @@
 /* static/styles.css */
 
-/* Fonts */
+/* Fonts and Body */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #1E1E1E; /* Site Background */
-    color: #C0C0C0; /* Body Text */
+    background-color: #1E1E1E;
+    color: #C0C0C0;
     margin: 0;
     padding: 0;
 }
 
 .container {
     max-width: 800px;
-    background-color: #2E2E2E; /* Content Background */
+    background-color: #2E2E2E;
     margin: 20px auto;
     padding: 20px;
     border-radius: 8px;
 }
 
+/* Headings */
 h1, h2 {
     font-family: 'Orbitron', sans-serif;
-    color: #DC143C; /* Titles */
-    margin-bottom: 10px;
+    color: #DC143C;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
+/* Labels */
 label {
     display: block;
     margin-top: 15px;
-    color: #00CC66; /* Accent Color */
+    color: #00CC66;
     font-weight: bold;
 }
 
+/* Inputs and Textareas */
 input[type="text"],
 textarea,
 select {
@@ -47,44 +51,60 @@ textarea::placeholder {
     color: #999;
 }
 
-.checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
+/* Form Container */
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
 }
 
-.checkbox-group label {
-    width: 45%;
-    margin-right: 5%;
-    margin-top: 10px;
-    color: #C0C0C0;
-    font-weight: normal;
+/* Form Groups */
+.form-group {
+    margin-bottom: 15px;
 }
 
-.checkbox-group input {
-    margin-right: 5px;
+.form-group label {
+    margin-bottom: 5px;
 }
 
-button {
-    margin-top: 20px;
-    padding: 12px 24px;
-    background-color: #00CC66; /* Accent Color */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    border: 1px solid #00CC66;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Submit Button */
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    color: #000000;
+    background-color: #00CC66;
     border: none;
-    border-radius: 4px;
-    color: #1E1E1E;
-    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
     font-family: 'Orbitron', sans-serif;
 }
 
-button:hover {
-    background-color: #00994D;
+.submit-btn:hover {
+    background-color: #45a049;
 }
 
+/* Anchor Buttons */
 a.button {
     display: inline-block;
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #DC143C; /* Bold Red */
+    background-color: #DC143C;
     color: #1E1E1E;
     text-decoration: none;
     border-radius: 4px;
@@ -95,75 +115,97 @@ a.button:hover {
     background-color: #B22222;
 }
 
-textarea#final_prompt {
+/* Prompt Output Textarea */
+.prompt-output {
+    resize: none;
+    overflow: auto;
     width: 100%;
+    height: 400px;
+    padding: 0.5em;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+/* Button Grid Styling */
+.button-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.button-grid button {
     padding: 10px;
-    background-color: #1E1E1E;
-    border: 1px solid #555;
-    border-radius: 4px;
+    border: 1px solid #00CC66;
+    background-color: transparent;
     color: #C0C0C0;
-    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
     font-family: 'Roboto', sans-serif;
 }
 
+.button-grid button.selected {
+    background-color: #00CC66;
+    color: #1E1E1E;
+}
+
+.button-grid button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.toast {
+    visibility: hidden;
+    min-width: 100px;
+    background-color: #00CC66;
+    color: #1E1E1E;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 17px;
+    font-family: 'Roboto', sans-serif;
+    opacity: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.toast.show-toast {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Responsive Layout */
 @media (max-width: 600px) {
-    .container {
-        width: 95%;
-    }
-    
-    .checkbox-group label {
-        width: 100%;
+    .button-grid {
+        flex-direction: column;
     }
 }
 
-/* Styles for the Prompt Name input field */
-.prompt-name {
-    width: 300px; /* Adjust the width as needed */
-    max-width: 100%; /* Ensure responsiveness on smaller screens */
-    padding: 0.5em;
-    box-sizing: border-box; /* Include padding in the total width */
+.selection-button {
+    padding: 10px;
+    border: 1px solid #00CC66;
+    background-color: transparent;
+    color: #C0C0C0;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Roboto', sans-serif;
 }
 
-/* Styles for the Prompt Output textarea */
-.prompt-output {
-    resize: none; /* Disable resizing */
-    overflow: auto; /* Enable scrolling */
-    width: 100%; /* Make it take full width of its container */
-    height: 400px; /* Set a fixed height; adjust as needed */
-    padding: 0.5em;
-    box-sizing: border-box; /* Include padding in the total width and height */
-    font-family: inherit; /* Inherit font from parent for consistency */
-    font-size: 1em; /* Set a readable font size */
+.selection-button.selected {
+    background-color: #00CC66;
+    color: #1E1E1E;
 }
 
-/* Styles for the Prompt Output textarea */
-.prompt-output {
-    resize: none; /* Disable resizing */
-    overflow: auto; /* Enable scrolling */
-    width: 100%; /* Full width of container */
-    height: 400px; /* Fixed height */
-    padding: 0.5em;
-    box-sizing: border-box; /* Include padding in total width and height */
-    font-family: inherit; /* Inherit font for consistency */
-    font-size: 1em; /* Readable font size */
-}
-
-/* Optional: Responsive Design */
-@media (max-width: 600px) {
-    .prompt-output {
-        height: 300px; /* Smaller height on small screens */
-    }
-}
-
-/* Optional: Enhanced Focus States */
-.prompt-output:focus {
-    border-color: #007BFF; /* Change border color on focus */
-    outline: none; /* Remove default outline */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle shadow */
-}
-
-/* Optional: Button Hover States */
-button:hover,
-.button:hover {
-    background-color: #218838; /* Darker green on hover */
+.selection-button:hover {
+    background-color: #4CAF50;
+    color: white;
 }

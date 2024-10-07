@@ -1,20 +1,19 @@
 Prompt: {{prompt_name}}
 
-What: Help me create a fictional work.
+Task: Help create a fictional literary work.
 
-Information about the work:
-{% if genre %} (Genre: {{ genre }}){% endif %}
-{% if subgenres %} (The subgenre is: {{ subgenres }}){% endif %}
-{% if narrative_perspective %} (The perspective is: {{ narrative_perspective }}){% endif %}
-{% if themes %} (Themes: {{ themes }}){% endif %}
-{% if tone %} (Tone: {{ tone }}){% endif %}
-{% if writing_style %} (Writing Style: {{ writing_style }}){% endif %}
-{% if setting %} (Setting: {{ setting }}){% endif %}
-{% if characters %} (Characters: {{ characters }}){% endif %}
-{% if plot_overview %} (Plot Overview: {{ plot_overview }}){% endif %}
-{% if length %} (Length: {{ length }}){% endif %}
-{% if additional_notes %} (Please try to include: {{ additional_notes }}){% endif %}
+{% if genre %}Genre: {{ genre }}{% endif %}
+{% if subgenres %}Subgenre: {{ subgenres }}{% endif %}
+{% if narrative_perspective %}Narrative Perspective: {{ narrative_perspective }}{% endif %}
+{% if themes %}Themes: {{ themes }}{% endif %}
+{% if tone %}Tone: {{ tone }}{% endif %}
+{% if writing_style %}Writing Style: {{ writing_style }}{% endif %}
+{% if setting %}Setting: {{ setting }}{% endif %}
+{% if characters %}Characters: {{ characters }}{% endif %}
+{% if plot_overview %}Plot Overview: {{ plot_overview }}{% endif %}
+{% if length %}Desired Length: {{ length }}{% endif %}
+{% if additional_notes %}Key Points to Include: {{ additional_notes }}{% endif %}
 
-Craft a complete, high-quality work using the provided details. Focus on developing a strong voice and style that aligns with the chosen genre and tone. The characters should feel realistic and relatable, they should also be well thought out and consistent. The setting should be immersive and the plot should unfold naturally with a clear beginning, middle, and end. Ensure that the writing is smooth and engaging, and that the themes are explored thoughtfully, making the story resonate on a deeper level.
+Instructions: Use the provided information to craft a high-quality, engaging fictional piece. Develop a strong voice and style that aligns with the chosen genre and tone. Ensure characters are well-developed, realistic, and relatable. Create an immersive setting, and develop a plot that unfolds naturally with a clear beginning, middle, and end. Write smoothly and engagingly, explore themes thoughtfully, and make the story resonate on a deeper level.
 
 Ensure the story is original and does not violate any copyright laws.

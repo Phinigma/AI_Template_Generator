@@ -11,5 +11,9 @@
     <div class="container">
         {% block content %}{% endblock %}
     </div>
+
+    <!-- Load the script after content is rendered -->
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
 </body>
 </html>
+

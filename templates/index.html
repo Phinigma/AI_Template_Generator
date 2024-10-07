@@ -1,176 +1,133 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Create Your AI Prompt</h1>
-<form method="POST" action="/">
-    <!-- Prompt Name -->
-    <label for="prompt_name">Prompt Name:</label>
-    <input type="text" id="prompt_name" name="prompt_name" class="prompt-name" placeholder="(Prompt Name)" required>
-    
-    
-    <!-- Type of Work -->
-    <label for="work_type">Type of Work:</label>
-    <select id="work_type" name="work_type" required>
-        <option value="" disabled selected>Select an option</option>
-        <option value="Fiction">Fiction</option>
-        <option value="Non-Fiction">Non-Fiction</option>
-    </select>
-    
-    <!-- Fiction Fields -->
-    <div id="fiction_fields" style="display:none;">
-        <h2>Fiction Details</h2>
-        
-        <!-- Genre -->
-        <label for="genre">Genre:</label>
-        <select id="genre" name="genre">
-            <option value="" disabled selected>Select a genre</option>
-            <!-- Options will be populated dynamically via script.js -->
-        </select>
-        
-        <!-- Subgenres -->
-        <label>Subgenre(s):</label>
-        <div id="subgenre_div">
-            <!-- Subgenre checkboxes will be populated dynamically -->
+<h1>Create Your AI Story Prompt</h1>
+
+<!-- Form Container for better structure -->
+<div class="form-container">
+    <form method="POST" action="/" class="story-prompt-form">
+        <!-- Prompt Name -->
+        <div class="form-group">
+            <label for="prompt_name">Prompt Name:</label>
+            <input type="text" id="prompt_name" name="prompt_name" class="prompt-name" placeholder="(Prompt Name)" required>
         </div>
-        
-        <!-- Narrative Perspective -->
-        <label for="narrative_perspective">Narrative Perspective:</label>
-        <select id="narrative_perspective" name="narrative_perspective">
-            <option value="" disabled selected>Select a perspective</option>
-            <option value="First Person">First Person</option>
-            <option value="Third Person Limited">Third Person Limited</option>
-            <option value="Third Person Omniscient">Third Person Omniscient</option>
-            <option value="Second Person">Second Person</option>
-        </select>
-        
-        <!-- Themes -->
-        <label>Themes:</label>
-        <div class="checkbox-group">
-            <label><input type="checkbox" name="themes[]" value="Love"> Love</label>
-            <label><input type="checkbox" name="themes[]" value="Betrayal"> Betrayal</label>
-            <label><input type="checkbox" name="themes[]" value="Survival"> Survival</label>
-            <label><input type="checkbox" name="themes[]" value="Identity"> Identity</label>
-            <label><input type="checkbox" name="themes[]" value="Good vs. Evil"> Good vs. Evil</label>
-            <label><input type="checkbox" name="themes[]" value="Coming of Age"> Coming of Age</label>
-            <label><input type="checkbox" name="themes[]" value="Courage"> Courage</label>
-            <label><input type="checkbox" name="themes[]" value="Friendship"> Friendship</label>
-            <label><input type="checkbox" name="themes[]" value="Power and Corruption"> Power and Corruption</label>
+
+        <!-- Type of Work -->
+        <div class="form-group">
+            <label for="work_type">Type of Work:</label>
+            <select id="work_type" name="work_type" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Fiction">Fiction</option>
+                <option value="Non-Fiction">Non-Fiction</option>
+            </select>
         </div>
-        
-        <!-- Tone/Mood -->
-        <label for="tone">Tone/Mood:</label>
-        <select id="tone" name="tone">
-            <option value="" disabled selected>Select a tone/mood</option>
-            <option value="Dark">Dark</option>
-            <option value="Light-hearted">Light-hearted</option>
-            <option value="Suspenseful">Suspenseful</option>
-            <option value="Inspirational">Inspirational</option>
-            <option value="Reflective">Reflective</option>
-        </select>
-        
-        <!-- Writing Style -->
-        <label for="writing_style">Writing Style:</label>
-        <select id="writing_style" name="writing_style">
-            <option value="" disabled selected>Select a style</option>
-            <option value="Descriptive">Descriptive</option>
-            <option value="Minimalistic">Minimalistic</option>
-            <option value="Conversational">Conversational</option>
-            <option value="Formal">Formal</option>
-            <option value="Humorous">Humorous</option>
-        </select>
-        
-        <!-- Setting -->
-        <label for="setting">Setting:</label>
-        <input type="text" id="setting" name="setting" placeholder="Time period and location">
-        
-        <!-- Main Characters -->
-        <label for="characters">Main Characters:</label>
-        <textarea id="characters" name="characters" rows="4" placeholder="Brief descriptions"></textarea>
-        
-        <!-- Plot Overview -->
-        <label for="plot_overview">Plot Overview:</label>
-        <textarea id="plot_overview" name="plot_overview" rows="4" placeholder="Brief plot overview"></textarea>
-        
-        <!-- Desired Length -->
-        <label for="length">Desired Length:</label>
-        <select id="length" name="length">
-            <option value="" disabled selected>Select length</option>
-            <!-- Options will be populated dynamically based on Fiction lengths -->
-            <option value="Flash Fiction (up to 1,000 words)">Flash Fiction (up to 1,000 words)</option>
-            <option value="Short Story (1,000 - 7,500 words)">Short Story (1,000 - 7,500 words)</option>
-            <option value="Novella (17,500 - 40,000 words)">Novella (17,500 - 40,000 words)</option>
-            <option value="Novel (40,000+ words)">Novel (40,000+ words)</option>
-        </select>
-        
-        <!-- Additional Notes -->
-        <label for="additional_notes">Additional Notes:</label>
-        <textarea id="additional_notes" name="additional_notes" rows="4"></textarea>
-    </div>
-    
-    <!-- Non-Fiction Fields -->
-    <div id="nonfiction_fields" style="display:none;">
-        <h2>Non-Fiction Details</h2>
-        
-        <!-- Subject Matter -->
-        <label for="subject_matter">Subject Matter:</label>
-        <input type="text" id="subject_matter" name="subject_matter" placeholder="Enter the subject matter" required>
-        
-        <!-- Purpose -->
-        <label for="purpose">Purpose:</label>
-        <select id="purpose" name="purpose">
-            <option value="" disabled selected>Select a purpose</option>
-            <option value="To Inform">To Inform</option>
-            <option value="To Persuade">To Persuade</option>
-            <option value="To Entertain">To Entertain</option>
-            <option value="To Reflect">To Reflect</option>
-        </select>
-        
-        <!-- Target Audience -->
-        <label>Target Audience:</label>
-        <div class="checkbox-group">
-            <label><input type="checkbox" name="audience[]" value="General Public"> General Public</label>
-            <label><input type="checkbox" name="audience[]" value="Professionals"> Professionals</label>
-            <label><input type="checkbox" name="audience[]" value="Students"> Students</label>
-            <label><input type="checkbox" name="audience[]" value="Academics"> Academics</label>
+
+        <!-- Fiction Fields -->
+        <div id="fiction_fields" style="display:none;">
+            <h2>Fiction Details</h2>
+
+            <div class="form-group">
+                <label for="genre">Genre:</label>
+                <select id="genre" name="genre"></select>
+            </div>
+
+            <div class="form-group">
+                <label>Subgenre(s):</label>
+                <div id="subgenre_div" class="button-grid"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="narrative_perspective">Narrative Perspective:</label>
+                <select id="narrative_perspective" name="narrative_perspective"></select>
+            </div>
+
+            <div class="form-group">
+                <label>Themes:</label>
+                <div id="themes_div" class="button-grid"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="tone">Tone/Mood:</label>
+                <select id="tone" name="tone"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="writing_style">Writing Style:</label>
+                <select id="writing_style" name="writing_style"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="length">Desired Length:</label>
+                <select id="length" name="length"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="setting">Setting:</label>
+                <input type="text" id="setting" name="setting" placeholder="Time period and location">
+            </div>
+
+            <div class="form-group">
+                <label for="characters">Main Characters:</label>
+                <textarea id="characters" name="characters" rows="4" placeholder="Brief descriptions"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="plot_overview">Plot Overview:</label>
+                <textarea id="plot_overview" name="plot_overview" rows="4" placeholder="Brief plot overview"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="additional_notes">Additional Notes:</label>
+                <textarea id="additional_notes" name="additional_notes" rows="4" placeholder="Any additional information or conditions"></textarea>
+            </div>
         </div>
-        
-        <!-- Tone -->
-        <label for="tone_nonfiction">Tone:</label>
-        <select id="tone_nonfiction" name="tone_nonfiction">
-            <option value="" disabled selected>Select a tone</option>
-            <option value="Formal">Formal</option>
-            <option value="Informal">Informal</option>
-            <option value="Persuasive">Persuasive</option>
-            <option value="Neutral">Neutral</option>
-            <option value="Inspirational">Inspirational</option>
-        </select>
-        
-        <!-- Writing Style -->
-        <label for="writing_style_nonfiction">Writing Style:</label>
-        <select id="writing_style_nonfiction" name="writing_style_nonfiction">
-            <option value="" disabled selected>Select a style</option>
-            <option value="Academic">Academic</option>
-            <option value="Journalistic">Journalistic</option>
-            <option value="Conversational">Conversational</option>
-            <option value="Technical">Technical</option>
-            <option value="Narrative">Narrative</option>
-        </select>
-        
-        <!-- Desired Length -->
-        <label for="length_nonfiction">Desired Length:</label>
-        <select id="length_nonfiction" name="length_nonfiction">
-            <option value="" disabled selected>Select length</option>
-            <!-- Options will be populated dynamically based on Non-Fiction lengths -->
-            <option value="Article (1,000 - 5,000 words)">Article (1,000 - 5,000 words)</option>
-            <option value="Essay (2,500 - 7,500 words)">Essay (2,500 - 7,500 words)</option>
-            <option value="Book (50,000+ words)">Book (50,000+ words)</option>
-        </select>
-        
-        <!-- Additional Notes -->
-        <label for="additional_notes_nonfiction">Additional Notes:</label>
-        <textarea id="additional_notes_nonfiction" name="additional_notes_nonfiction" rows="4"></textarea>
-    </div>
-    
-    <button type="submit">Generate Prompt</button>
-</form>
-<script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+
+        <!-- Non-Fiction Fields -->
+        <div id="nonfiction_fields" style="display:none;">
+            <h2>Non-Fiction Details</h2>
+
+            <div class="form-group">
+                <label>Genre:</label>
+                <div id="genre_nonfiction_div" class="button-grid"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Purpose:</label>
+                <div id="purpose_div" class="button-grid"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Target Audience:</label>
+                <div id="audience_div" class="button-grid"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Tone:</label>
+                <div id="tone_nonfiction_div" class="button-grid"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Writing Style:</label>
+                <div id="writing_style_nonfiction_div" class="button-grid"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="length_nonfiction">Desired Length:</label>
+                <select id="length_nonfiction" name="length_nonfiction"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="subject_matter">Subject Matter:</label>
+                <input type="text" id="subject_matter" name="subject_matter" placeholder="Enter the subject matter">
+            </div>
+
+            <div class="form-group">
+                <label for="additional_notes_nonfiction">Additional Notes:</label>
+                <textarea id="additional_notes_nonfiction" name="additional_notes_nonfiction" rows="4" placeholder="Any additional information or conditions"></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Generate Prompt</button>
+    </form>
+</div>
+
 {% endblock %}

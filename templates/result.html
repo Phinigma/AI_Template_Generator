@@ -1,14 +1,66 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>Your Generated Prompt</h2>
-    
-    <!-- Display the final prompt in a textarea -->
-    <textarea id="final_prompt" class="prompt-output" rows="20" readonly>{{ final_prompt }}</textarea>
-    
-    <!-- Buttons for user actions -->
-    <button onclick="copyPrompt()">Copy to Clipboard</button>
-    <a href="/" class="button">Create Another Prompt</a>
-    
+    <!-- Display the provided inputs as plain text on the page with enhanced formatting -->
+    <div>
+        <h2>Provided Inputs:</h2>
+        <ul style="list-style-type: none; padding: 0; color: #D1D5DB;;">
+            {% for key, value in user_inputs.items() %}
+                <li style="margin-bottom: 10px;">
+                    <strong style="font-size: 1.2em; color: #226cda;">
+                        {{ key | replace('_', ' ') | capitalize }}:
+                    </strong> 
+                    {% if value is iterable and not value is string %}
+                        {{ value | join(', ') }}
+                    {% else %}
+                        {{ value }}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Display the final prompt in a textarea for easy copy/paste -->
+    <div style="margin-top: 20px;">
+        <label for="final_prompt" style="font-size: 1.2em; font-weight: bold;">Generated Prompt:</label>
+        <textarea id="final_prompt" class="prompt-output" rows="10" readonly style="width: 100%; padding: 10px; margin-top: 10px;">{{ final_prompt }}</textarea>
+    </div>
+
+    <!-- Button to copy the prompt to the clipboard -->
+    <button onclick="copyPrompt()" style="margin-top: 10px; padding: 10px; background-color: #4CAF50; color: #000000; border: none; cursor: pointer;">
+        Copy to Clipboard
+    </button>
+    <a href="/" class="button" style="margin-left: 15px; padding: 10px; background-color: #2196F3; color: #000000; text-decoration: none; border-radius: 5px;">
+        Create Another Prompt
+    </a>
+
+    <!-- Custom Toast Notification for Copy Confirmation -->
+    <div id="toast" class="toast" style="display: none;">
+        Prompt copied to clipboard!
+    </div>
+
+    <!-- Script for copying the prompt -->
+    <script>
+        function copyPrompt() {
+            var promptText = document.getElementById('final_prompt');
+            promptText.select();
+            promptText.setSelectionRange(0, 99999);  /* For mobile devices */
+            navigator.clipboard.writeText(promptText.value).then(() => {
+                showToast();  // Show the custom toast notification
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        function showToast() {
+            var toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            toast.classList.add('show-toast');  // Add class to trigger the fade-in animation
+            setTimeout(() => {
+                toast.classList.remove('show-toast');  // Remove class for fade-out
+            }, 3000);  // Toast is visible for 3 seconds
+        }
+    </script>
+
     <!-- Embed JSON data within a script tag (if needed) -->
     <script id="prompt-data" type="application/json">
         {{ user_inputs | tojson }}

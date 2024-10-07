@@ -1,13 +1,14 @@
 Prompt: {{prompt_name}}
 
-What: Act as a subject matter expert and help me create a non-fiction literary work.
+Task: Assume the role of a subject matter expert to assist in crafting a nonfiction literary work.
 
-{% if subject_matter %} (Subject Matter: {{ subject_matter }}){% endif %}
-{% if purpose %} (Purpose: {{ purpose }}){% endif %}
-{% if audience %} (Audience: {{ audience }}){% endif %}
-{% if tone %} (Tone: {{ tone }}){% endif %}
-{% if writing_style %} (Writing Style: {{ writing_style }}){% endif %}
-{% if length %} (Length: {{ length }}){% endif %}
-{% if additional_notes %} (Please try to include: {{ additional_notes }}){% endif %}
+{% if subject_matter %}Subject: {{ subject_matter }}{% endif %}
+{% if genre %}Genre: {{ genre }}{% endif %}
+{% if purpose %}Purpose: {{ purpose }}{% endif %}
+{% if audience %}Target Audience: {{ audience | join(', ') }}{% endif %}
+{% if tone %}Tone: {{ tone }}{% endif %}
+{% if writing_style %}Writing Style: {{ writing_style }}{% endif %}
+{% if length %}Desired Length: {{ length }}{% endif %}
+{% if additional_notes %}Key Points to Include: {{ additional_notes }}{% endif %}
 
-Please use this information to write a well-researched and insightful nonfiction piece that reads naturally and engages the reader. Focus on delivering clear, concise information while maintaining a logical structure that builds on the key points. Ensure the tone aligns with the subject matter, and the writing style should be accessible yet professional, allowing the reader to fully grasp the complexities of the topic. When possible use simple terms to describe key concepts.
+Instructions: Use the provided information to create a well-researched, engaging nonfiction piece. Maintain a clear, logical flow that builds upon key ideas, ensuring the content is insightful and informative. Adapt the tone appropriately to the subject and audience, and utilize a writing style that is both accessible and professional. Simplify complex concepts where possible, and focus on delivering value to the reader in an easy-to-understand format.
