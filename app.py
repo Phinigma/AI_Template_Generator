@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_from_directory, jsonify
+from flask import Flask, render_template, request, jsonify
 import os
 import json
 from jinja2 import Template
@@ -11,10 +11,11 @@ def load_config():
     with open(config_path, 'r') as f:
         return json.load(f)
 
-@app.route('/config/<path:filename>')
-def config_files(filename):
-    config_dir = os.path.join(app.root_path, 'config')
-    return send_from_directory(config_dir, filename)
+# New route to serve the configuration data as JSON
+@app.route('/get_prompt_config')
+def get_prompt_config():
+    config = load_config()
+    return jsonify(config)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -24,7 +25,6 @@ def index():
 
         # Store user inputs
         user_inputs = {'prompt_name': prompt_name, 'work_type': work_type}
-        final_prompt = "Generated prompt based on selected inputs."
 
         if work_type == 'Fiction':
             # Collect and process fiction-specific data
@@ -38,11 +38,20 @@ def index():
             characters = request.form.get('characters')
             plot_overview = request.form.get('plot_overview')
             length = request.form.get('length')
+            additional_notes = request.form.get('additional_notes')
 
             user_inputs.update({
-                'genre': genre, 'subgenres': subgenres, 'narrative_perspective': narrative_perspective,
-                'themes': themes, 'tone': tone, 'writing_style': writing_style, 'setting': setting,
-                'characters': characters, 'plot_overview': plot_overview, 'length': length
+                'genre': genre,
+                'subgenres': subgenres,
+                'narrative_perspective': narrative_perspective,
+                'themes': themes,
+                'tone': tone,
+                'writing_style': writing_style,
+                'setting': setting,
+                'characters': characters,
+                'plot_overview': plot_overview,
+                'length': length,
+                'additional_notes': additional_notes
             })
 
         elif work_type == 'Non-Fiction':
@@ -67,12 +76,13 @@ def index():
                 'additional_notes': additional_notes
             })
 
-
-        # Output the generated prompt (you can customize this part)
+        # Generate the final prompt
         final_prompt = generate_prompt(work_type, user_inputs)
         return render_template('result.html', final_prompt=final_prompt, user_inputs=user_inputs)
 
-    return render_template('index.html')
+    else:
+        # For GET request, simply render the index page
+        return render_template('index.html')
 
 def generate_prompt(work_type, inputs):
     """

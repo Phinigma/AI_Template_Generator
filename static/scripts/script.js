@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     nonfictionFields.style.display = 'none';
 
     // Fetch the configuration file
-    fetch('/config/prompt_config.json')
+    fetch('/get_prompt_config')
         .then(response => response.json())
         .then(data => {
             promptConfig = data;  // Store the data in promptConfig
@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
             console.error('Error fetching prompt configuration:', error);
         });
+
 
     // Event listener for work type selection
     workTypeSelect.addEventListener('change', function () {
