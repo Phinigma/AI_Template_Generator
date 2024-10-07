@@ -1,0 +1,69 @@
+{
+    "Fiction": {
+      "genres": {
+        "Fantasy": ["High Fantasy", "Urban Fantasy", "Dark Fantasy", "Epic Fantasy", "Magical Realism", "Superhero", "Alternate Reality"],
+        "Science Fiction": ["Cyberpunk", "Space Opera", "Time Travel", "Dystopian", "Post-Apocalyptic", "Steampunk", "Biopunk", "Alien Invasion", "Slipstream", "Dystopia"],
+        "Mystery": ["Detective", "Cozy Mystery", "Noir", "Crime Thriller", "Whodunit", "Suspense", "Historical Mystery", "Medical Thriller"],
+        "Romance": ["Contemporary Romance", "Historical Romance", "Paranormal Romance", "Romantic Suspense", "Gothic Fiction", "Dark Romance", "LGBTQIA Romance", "Romantic Fantasy", "Chivalric Romance", "BIPOC Romance"],
+        "Horror": ["Supernatural Horror", "Psychological Horror", "Gothic Horror", "Slasher", "Folk Horror", "Religious Horror", "Found Footage", "Monster Horror", "Apocalyptic Horror", "Natural Horror"],
+        "Historical Fiction": ["Historical Romance", "Alternate History", "Historical Mystery", "Biographical Fiction", "Historical Thriller", "Historical Adventure", "Historical War Fiction", "Pioneer Fiction", "Western"],
+        "Adventure": ["Action-Adventure", "Survival Stories", "War Adventures", "Spy Adventure", "Suspense Driven", "Chase and Seek", "Treasure Map", "Pirate", "Ancient Warrior", "Desert Island"],
+        "Paranormal": ["Ghost Story", "Demonic / Religious", "UFO's and Abduction", "Cryptids", "Inhuman Ability", "Mutants", "Speculative Fiction", "Supernatural"]
+      },
+      "narrative_perspectives": [
+        "First Person", "Third Person Limited", "Third Person Omniscient", "Second Person", "Multiple Perspectives", "Epistolary (letters/diary entries)"
+      ],
+      "themes": [
+        "Love", "Betrayal", "Survival", "Identity", "Good vs. Evil", "Coming of Age", "Courage", "Family Dynamics", "Marriage and Commitment",
+        "Forbidden Love", "Loyalty", "Ambition and Greed", "Dystopia", "Revenge and Retribution", "War", "Morality and Ethics", "Honor and Integrity",
+        "Heroism", "Mortality", "Fear", "Horror", "Perseverance", "Nature", "Friendship", "Power and Corruption", "Alienation and Isolation",
+        "Freedom and Oppression", "Fate vs. Free Will", "Search for Meaning", "Transformation and Change", "Technology and Progress", "Social Inequality",
+        "Justice and Injustice", "Faith and Doubt", "Time and Memory", "Supernatural Elements", "Existentialism", "Redemption", "Sacrifice", "Hope and Despair"
+      ],
+      "tones": [
+        "Serious", "Humorous", "Ironic", "Sarcastic", "Reflective", "Nostalgic", "Melancholic", "Optimistic", "Pessimistic", "Tragic", "Joyful", "Suspenseful", 
+        "Mysterious", "Romantic", "Bitter", "Angry", "Sympathetic", "Critical", "Sincere", "Playful", "Satirical", "Formal", "Informal", "Objective", "Subjective", 
+        "Enthusiastic", "Detached", "Compassionate", "Contemptuous", "Anxious", "Hopeful", "Despairing", "Light-hearted", "Witty", "Dramatic", "Skeptical", 
+        "Resigned", "Impassioned", "Gloomy", "Eerie", "Ominous", "Defiant", "Whimsical", "Somber", "Zealous", "Candid", "Provocative", "Tense", "Understated", 
+        "Vibrant", "Wistful"
+      ],
+      "writing_styles": [
+        "Descriptive", "Minimalistic", "Conversational", "Formal", "Humorous", "Poetic", "Gothic", "Realistic", "Satirical", "Symbolic", 
+        "Stream of Consciousness", "Journalistic", "Narrative", "Expository", "Persuasive"
+      ],
+      "lengths": [
+        "Micro (Up to 1000 words)", "Short (1000 - 5000 words)", "Medium (5000 - 10000 words)", "Long (10000 - 25000)", "Epic (25000 - 50000)"
+      ]
+    },
+    "Non-Fiction": {
+      "genres": {
+        "Biography": ["Personal Biography", "Professional Biography", "Narrative Biography", "Historical Biography"],
+        "Self-Help": ["Motivational", "Productivity", "Mindfulness", "Meditation", "Journaling", "Financial Planning", "Gardening", "Yoga"],
+        "History": ["Ancient History", "Medieval History", "Modern History", "Military History", "Alternative History", "Political History", "Art History", "History of Religion", "World History"],
+        "Science": ["Physics", "Biology", "Chemistry", "Astrophysics", "Space Travel", "Astronomy", "Origin of Species", "Particle Physics", "Mathematical Theories", "History of Science"],
+        "Technology": ["AI", "Blockchain", "Cybersecurity", "Augmented Reality", "Quantum Computing", "Gadgets", "Hackers", "Privacy", "Gaming", "Biotech & Genetic Engineering", "Cryptography & Encryption", "Machine Learning"],
+        "Health": ["General & Scientific Nutrition", "Mental Health", "Fitness & Sports", "Stretching and Agility", "Folk Medicine and Traditions", "Health & Wellness", "Nutrition on a Budget", "Martial Arts"],
+        "Travel": ["Travel Journal", "Travel Instructions", "Travel Guidebook", "Travel Narrative", "Group Travel", "Cultural Immersion", "Business Travel", "Luxury Travel"]
+      },
+      "purposes": [
+        "To Inform", "To Persuade", "To Entertain", "To Reflect", "To Admonish", "To Inquire"
+      ],
+      "tones": [
+        "Formal", "Informal", "Persuasive", "Neutral", "Sarcastic", "Cynical", "Encouraging", "Optimistic", "Pessimistic", "Doubtful", "Uplifting", "Sympathetic", "Critical", "Inspirational"
+      ],
+      "writing_styles": [
+        "Academic", "Journalistic", "Conversational", "Technical", "Analytical", "Professional", "Casual", "Hobbyist", "Expository", "Satirical", "Philosophical", "Critical", "Investigative"
+      ],
+      "lengths": [
+        "Micro (Up to 1000 words)", "Short (1000 - 5000 words)", "Medium (5000 - 10000 words)", "Long (10000 - 25000)", "Epic (25000 - 50000)"
+      ],
+      "audiences": [
+        "General Public",
+        "Professionals",
+        "Academics",
+        "Students",
+        "Enthusiasts"
+      ]
+    }
+  }
+  
