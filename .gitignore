@@ -1,9 +1,3 @@
-# Ignore all files in the config directory
-config/*
-# But allow specific non-sensitive config files
-!config/genres.json
-!config/options.json
-
 # Ignore sensitive files
 config/secrets.json
 config/.env
